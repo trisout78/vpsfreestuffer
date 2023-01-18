@@ -1,8 +1,8 @@
 echo "This script is made by Trisout for vpsfree.fr"
-echo "Install dependencies..."
+echo "Installing dependencies..."
 curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash
 apt update
-echo "Install PufferPanel"
+echo "Installing PufferPanel..."
 sudo apt-get install pufferpanel
 sudo systemctl enable pufferpanel
 echo "User Setup"
