@@ -1,4 +1,4 @@
-echo "This script is made by Trisout for vpsfree.fr"
+echo "This script is made by Trisout for vpslxc.com"
 echo "Installing dependencies..."
 curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash
 apt update
