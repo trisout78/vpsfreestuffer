@@ -1,5 +1,9 @@
-
 echo "This script is made by Trisout for vpslxc.com"
+echo "Installing dependencies..."
+curl -SsL https://playit-cloud.github.io/ppa/key.gpg | sudo apt-key add -
+sudo curl -SsL -o /etc/apt/sources.list.d/playit-cloud.list https://playit-cloud.github.io/ppa/playit-cloud.list
+sudo apt update
+sudo apt install playit -y
 echo "Available minecraft versions:"
 echo "1 -> 1.19.2 (Recommended 4Gb+ ram)"
 echo "2 -> 1.8.8"
@@ -8,29 +12,17 @@ read -p "Enter minecraft version: " minecraftv
 case $minecraftv in
     1)
         echo "Selected: ${minecraftv} > 1.19.2"
-        mkdir -p mcserver/cache/ && wget -O mcserver/cache/mojang_1.18.2.jar "https://drive.google.com/uc?id=1WJ0etteMz3il7gs5iJhDyjoF1t4L35UN&export=download&confirm=t&uuid=f82a51cd-60da-4672-9ec8-445e88cff74c"
+        cd
+        mkdir mc-server
+        cd mc-server
         sleep 1
-        cd mcserver
-        wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar
+        wget http://node.eternodes.eu:45005/1.19.2.tar.gz
+        chmod 777 1.19.2.tar.gz
+        tar -xzvf 1.19.2.tar.gz
         echo "eula=true" > eula.txt
         apt install openjdk-17-jre-headless -y
         ;;
 
     2)
-        echo "Selected: ${minecraftv} > 1.16.5"
-        mkdir -p mcserver/cache/ && wget -O mcserver/cache/mojang_1.16.5.jar "https://drive.google.com/uc?id=14a-_cH_UTbJDnk3CrpDuN5fZEcEyWq1M&export=download&confirm=t&uuid=7b6920de-983c-443c-ae9c-54c5cb49d4eb"
-        sleep 1
-        cd mcserver
-        wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/1.16.5/builds/794/downloads/paper-1.16.5-794.jar
-        echo "eula=true" > eula.txt
-        apt install openjdk-16-jre-headless -y
-        pm2 start "java -jar server.jar"
-        echo "Server is up and running!"
-        echo "to check the logs do:"
-        echo "pm2 logs 1"
-        echo ""
-        echo "to attach to the console do:"
-        echo "pm2 attach 1"
-        echo ""
-        echo "For more commands please check the help for pm2"
-        ;;
+        echo "Selected: ${minecraftv} > 1.8.8"
+        echo "Soon"
